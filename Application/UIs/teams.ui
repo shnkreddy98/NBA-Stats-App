@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>teamnamelabel</class>
+ <widget class="QWidget" name="teamnamelabel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>557</width>
+    <height>492</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>15</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>PlayersInfo</string>
+  </property>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>14</x>
+     <y>10</y>
+     <width>531</width>
+     <height>471</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="lteamnameabel">
+         <property name="text">
+          <string>Team Name</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="teamMenu"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Season</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="seasonMenu"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="playersTable">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="lineWidth">
+        <number>2</number>
+       </property>
+       <property name="rowCount">
+        <number>10</number>
+       </property>
+       <property name="columnCount">
+        <number>5</number>
+       </property>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <column>
+        <property name="text">
+         <string>PlayerID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>PlayerName</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Height</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Weight</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>DraftYear</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="TeamDetails">
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+         <underline>true</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="text">
+        <string>Team Details</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="YearFounded">
+       <property name="text">
+        <string>Year founded</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="Arena">
+       <property name="text">
+        <string>Arena</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="ArenaCapacity">
+       <property name="text">
+        <string>Arena capacity</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="Owner">
+       <property name="text">
+        <string>Owner</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="GeneralManager">
+       <property name="text">
+        <string>General manager</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="HeadCoach">
+       <property name="text">
+        <string>Head coach</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="DLeagueAffiliation">
+       <property name="text">
+        <string>D-League affiliation</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="backToMainMenu">
+    <property name="text">
+     <string>Back to MainMenu</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
