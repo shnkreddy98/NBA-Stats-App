@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>557</width>
-    <height>492</height>
+    <width>692</width>
+    <height>745</height>
    </rect>
   </property>
   <property name="font">
@@ -23,8 +23,8 @@
     <rect>
      <x>14</x>
      <y>10</y>
-     <width>531</width>
-     <height>471</height>
+     <width>671</width>
+     <height>731</height>
     </rect>
    </property>
    <property name="orientation">
@@ -43,16 +43,6 @@
        </item>
        <item>
         <widget class="QComboBox" name="teamMenu"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Season</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="seasonMenu"/>
        </item>
       </layout>
      </item>
@@ -175,9 +165,14 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="playersInfoNext">
+    <property name="text">
+     <string>Next</string>
+    </property>
+   </widget>
    <widget class="QPushButton" name="backToMainMenu">
     <property name="text">
-     <string>Back to MainMenu</string>
+     <string>Back to Main Menu</string>
     </property>
    </widget>
   </widget>

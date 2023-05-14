@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Standings</class>
+ <widget class="QWidget" name="Standings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>809</width>
+    <height>420</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Standings</string>
+  </property>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>791</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QLabel" name="label_2">
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Standings&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Select Date </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDateEdit" name="dateEdit"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="showResults">
+       <property name="text">
+        <string>Show</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>791</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="East">
+    <attribute name="title">
+     <string>East</string>
+    </attribute>
+    <widget class="QTableWidget" name="eastConfTable">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>791</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Team Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>GP</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>GW</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>GL</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Home Record</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Away Record</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Conference</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>date</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="West">
+    <attribute name="title">
+     <string>West</string>
+    </attribute>
+    <widget class="QTableWidget" name="westConfTable">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>791</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Team Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>GP</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>GW</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>GL</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Home Record</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Away Record</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Conference</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>date</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
