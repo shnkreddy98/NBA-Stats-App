@@ -1,6 +1,5 @@
 import sys
 import random
-
 import pandas as pd
 from pandas import DataFrame
 from DATA225utils import make_connection, dataframe_query
@@ -12,16 +11,17 @@ from PyQt5.QtWidgets import QApplication, QHeaderView, \
                             QTableWidget, QTableWidgetItem
 
 
-class nbaall(QWindow):
+class viewData():
     def __init__(self):
         super().__init__()
+
         self.ui = uic.loadUi('UIs/views.ui')
         self.ui.show()
 
         self._initialize_tables()
 
     def _initialize_tables(self):
-        conn = make_connection(config_file = '../configFiles/local_snps_db.ini')
+        conn = make_connection(config_file = '../configFiles/temp.ini')
         cursor = conn.cursor()
 
         sql_players = ("""SELECT * from players LIMIT 15""")
@@ -108,7 +108,9 @@ class nbaall(QWindow):
         cursor.close()
         conn.close()
 
+        
+        
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    form = nbaall()
+    form = viewData()
     sys.exit(app.exec_())

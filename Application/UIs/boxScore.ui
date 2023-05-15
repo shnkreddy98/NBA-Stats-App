@@ -65,12 +65,32 @@
      </row>
      <column>
       <property name="text">
-       <string>TEAM ID</string>
+       <string>PlayerName</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>SECONDS</string>
+       <string>TeamName</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Minutes</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Points</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Assists</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Rebounds</string>
       </property>
      </column>
      <column>
@@ -110,7 +130,7 @@
      </column>
      <column>
       <property name="text">
-       <string>AST</string>
+       <string>DREB</string>
       </property>
      </column>
      <column>
@@ -125,32 +145,7 @@
      </column>
      <column>
       <property name="text">
-       <string>TURN OVER</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
        <string>PF</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>PTS</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>REB</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>GAME ID</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>PLAYER ID</string>
       </property>
      </column>
     </widget>
@@ -195,12 +190,37 @@
      </row>
      <column>
       <property name="text">
-       <string>TEAM ID</string>
+       <string>New Column</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>SECONDS</string>
+       <string>PlayerName</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>TeamName</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Minutes</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Points</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Assists</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Rebounds</string>
       </property>
      </column>
      <column>
@@ -240,7 +260,7 @@
      </column>
      <column>
       <property name="text">
-       <string>AST</string>
+       <string>DREB</string>
       </property>
      </column>
      <column>
@@ -255,32 +275,7 @@
      </column>
      <column>
       <property name="text">
-       <string>TURN OVER</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
        <string>PF</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>PTS</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>REB</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>GAME ID</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>PLAYER ID</string>
       </property>
      </column>
     </widget>

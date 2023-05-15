@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>809</width>
+    <height>443</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>UpdateData</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>791</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="players">
+     <attribute name="title">
+      <string>players</string>
+     </attribute>
+     <widget class="QLabel" name="outputPlayers">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>280</y>
+        <width>771</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>471</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="weight_2"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="height">
+         <property name="text">
+          <string>height</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="country_2"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="country">
+         <property name="text">
+          <string>country</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="Name">
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="name_3"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="draftyear">
+         <property name="text">
+          <string>draftyear</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="lineEdit_5"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="height_2"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="weight">
+         <property name="text">
+          <string>weight</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QPushButton" name="playersUpdateBtn">
+         <property name="text">
+          <string>Update</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>teams</string>
+     </attribute>
+     <widget class="QLabel" name="outputTeam">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>270</y>
+        <width>781</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>781</width>
+        <height>271</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="2">
+        <widget class="QLabel" name="D_league_affiliation">
+         <property name="text">
+          <string>d_league_affliation</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="city">
+         <property name="text">
+          <string>city</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="city_2"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="year_founded">
+         <property name="text">
+          <string>year_founded</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLineEdit" name="lineEdit_9"/>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="headcoach">
+         <property name="text">
+          <string>headcoach</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="state">
+         <property name="text">
+          <string>state</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QLineEdit" name="abbrevation"/>
+       </item>
+       <item row="5" column="3">
+        <widget class="QLineEdit" name="general_manager_2"/>
+       </item>
+       <item row="2" column="3">
+        <widget class="QLineEdit" name="state_2"/>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="conference">
+         <property name="text">
+          <string>conference</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="year_founded_2"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="arena_2"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="arena_capacity">
+         <property name="text">
+          <string>arena_capacity</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="Abbrevation">
+         <property name="text">
+          <string>Abbrevation</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLineEdit" name="conference_2"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="name">
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="owner_2"/>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="owner">
+         <property name="text">
+          <string>owner</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="arena_capacity_2"/>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLabel" name="general_manager">
+         <property name="text">
+          <string>general_manager</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="d_league_affiliation"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="arena">
+         <property name="text">
+          <string>arena</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="name_2"/>
+       </item>
+       <item row="6" column="3">
+        <widget class="QPushButton" name="teamsUpdateBtn">
+         <property name="text">
+          <string>Update</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

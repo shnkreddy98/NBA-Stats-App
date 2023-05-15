@@ -12,6 +12,11 @@ from PyQt5.QtWidgets import QApplication, QHeaderView, \
                             QTableWidget, QTableWidgetItem
 
 
+from create import updateData
+from views import viewData
+from analyze import analyzePlayer, analyzeTeam
+
+
 class MainMenu(QWindow):
     """
     The main application window.
@@ -37,16 +42,12 @@ class MainMenu(QWindow):
         Checking which radio button is selected and opening that page
         """
         if self.ui.update.isChecked():
-            print("update")
+            self.update_data = updateData()
+            self.update_data
 
         elif self.ui.view.isChecked():
-            self.ui = uic.loadUi('UIs/views.ui')
-            self.ui.show()
-
-            self._initialize_tables()
-
-
-            self.ui.back.clicked.connect(self.show_main_menu)
+            self.view_data = viewData()
+            self.view_data
 
 
         elif self.ui.search.isChecked():
@@ -54,12 +55,28 @@ class MainMenu(QWindow):
             self.ui.show()
 
             self.ui.searchNext.clicked.connect(self.search_menu)
-
             self.ui.backToMainMenu.clicked.connect(self.show_main_menu)
-
+        
         elif self.ui.analyze.isChecked():
-            print("analyze")
+            self.ui = uic.loadUi('UIs/analyzeMenu.ui')
+            self.ui.show()
+
+            self.ui.analyzeNext.clicked.connect(self.analyze_menu)
+            self.ui.analyzeBack.clicked.connect(self.show_main_menu)
             
+        else:
+            return
+
+    def analyze_menu(self):
+
+        if self.ui.analyzeByPlayer.isChecked():
+            self.analyze_player = analyzePlayer()
+            self.analyze_player
+
+        elif self.ui.analyzeByTeam.isChecked():
+            self.analyze_team = analyzeTeam()
+            self.analyze_team
+
         else:
             return
 
@@ -467,7 +484,7 @@ class MainMenu(QWindow):
         sql_home = (
             """
                 SELECT P.player_name, T.name, PGS.SECONDS/60, PGS.PTS, PGS.AST, PGS.REB, PGS.FGM, PGS.FGA, 
-                    PGS.FG3M, PGS.FG3A, PGS.FTM, PGS.FTA, PGS.OREB, PGS.DREB, PGS.AST, PGS.STL, 
+                    PGS.FG3M, PGS.FG3A, PGS.FTM, PGS.FTA, PGS.OREB, PGS.DREB, PGS.STL, 
                     PGS.BLK, PGS.TurnOver, PGS.PF
                 FROM player_game_stats PGS
                 inner join games G
@@ -489,7 +506,7 @@ class MainMenu(QWindow):
         sql_away = (
             """
                 SELECT P.player_name, T.name, PGS.SECONDS/60, PGS.PTS, PGS.AST, PGS.REB, PGS.FGM, PGS.FGA, 
-                    PGS.FG3M, PGS.FG3A, PGS.FTM, PGS.FTA, PGS.OREB, PGS.DREB, PGS.AST, PGS.STL, 
+                    PGS.FG3M, PGS.FG3A, PGS.FTM, PGS.FTA, PGS.OREB, PGS.DREB, PGS.STL, 
                     PGS.BLK, PGS.TurnOver, PGS.PF
                 FROM player_game_stats PGS
                 inner join games G
@@ -537,95 +554,6 @@ class MainMenu(QWindow):
         conn.close()
 
 
-    def _initialize_tables(self):
-        conn = make_connection(config_file = '../configFiles/local_snps_db.ini')
-        cursor = conn.cursor()
-
-        sql_players = ("""SELECT * from players LIMIT 15""")
-        sql_games = ("""SELECT * from games LIMIT 15""")
-        sql_teams = ("""SELECT * from teams LIMIT 15""")
-        sql_ranking = ("""SELECT * from ranking LIMIT 15""")
-        sql_game_stats = ("""SELECT * from game_stats LIMIT 15""")
-        sql_player_stats = ("""SELECT * from player_game_stats LIMIT 15""")
-    
-        cursor.execute(sql_players)
-        rows = cursor.fetchall()
-
-        self.ui.players.setRowCount(0)
-        
-        for row_number, row_data in enumerate(rows):
-            self.ui.players.insertRow(row_number)
-
-            for column_number, data in enumerate(row_data):
-                item = QTableWidgetItem(str(data))
-                self.ui.players.setItem(row_number, column_number, item)
-
-        cursor.execute(sql_games)
-        rows = cursor.fetchall()
-
-        self.ui.games.setRowCount(0)
-        
-        for row_number, row_data in enumerate(rows):
-            self.ui.games.insertRow(row_number)
-
-            for column_number, data in enumerate(row_data):
-                item = QTableWidgetItem(str(data))
-                self.ui.games.setItem(row_number, column_number, item)
-
-        cursor.execute(sql_teams)
-        rows = cursor.fetchall()
-
-        self.ui.teams.setRowCount(0)
-        
-        for row_number, row_data in enumerate(rows):
-            self.ui.teams.insertRow(row_number)
-
-            for column_number, data in enumerate(row_data):
-                item = QTableWidgetItem(str(data))
-                self.ui.teams.setItem(row_number, column_number, item)
-
-        cursor.execute(sql_ranking)
-        rows = cursor.fetchall()
-
-        self.ui.rank.setRowCount(0)
-        
-        for row_number, row_data in enumerate(rows):
-            self.ui.rank.insertRow(row_number)
-
-            for column_number, data in enumerate(row_data):
-                item = QTableWidgetItem(str(data))
-                self.ui.rank.setItem(row_number, column_number, item)
-
-
-        cursor.execute(sql_game_stats)
-        rows = cursor.fetchall()
-
-        self.ui.game_stats.setRowCount(0)
-        
-        for row_number, row_data in enumerate(rows):
-            self.ui.game_stats.insertRow(row_number)
-
-            for column_number, data in enumerate(row_data):
-                item = QTableWidgetItem(str(data))
-                self.ui.game_stats.setItem(row_number, column_number, item)
-
-
-        cursor.execute(sql_player_stats)
-        rows = cursor.fetchall()
-
-        self.ui.players_game_stats.setRowCount(0)
-        
-        for row_number, row_data in enumerate(rows):
-            self.ui.players_game_stats.insertRow(row_number)
-
-            for column_number, data in enumerate(row_data):
-                item = QTableWidgetItem(str(data))
-                self.ui.players_game_stats.setItem(row_number, column_number, item)
-
-        cursor.close()
-        conn.close()
-
-
     def _enter_date_menu(self):
 
         teamName1 = self.ui.teamMenu.currentData()[0]
@@ -653,6 +581,9 @@ class MainMenu(QWindow):
         for row in rows:
             name = str(row[0])
             self.ui.dateMenu.addItem(name, row)
+
+
+
 
 
 if __name__ == '__main__':

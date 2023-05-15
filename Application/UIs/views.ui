@@ -7,25 +7,12 @@
     <x>0</x>
     <y>0</y>
     <width>868</width>
-    <height>537</height>
+    <height>512</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>tableViews</string>
   </property>
-  <widget class="QPushButton" name="back">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>500</y>
-     <width>101</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Back</string>
-   </property>
-  </widget>
   <widget class="QSplitter" name="splitter">
    <property name="geometry">
     <rect>
@@ -115,7 +102,6 @@
         <string>Id</string>
        </property>
       </column>
-
       <column>
        <property name="text">
         <string>status</string>
