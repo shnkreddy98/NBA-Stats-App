@@ -47,6 +47,20 @@
       </widget>
      </item>
      <item>
+      <widget class="QRadioButton" name="searchByGame">
+       <property name="text">
+        <string>Search By Game</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="searchStandings">
+       <property name="text">
+        <string>Search Standings</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="searchNext">
        <property name="text">
         <string>Next</string>

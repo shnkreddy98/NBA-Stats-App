@@ -40,14 +40,14 @@ class MainMenu(QWindow):
             print("update")
 
         elif self.ui.view.isChecked():
-            self.ui = uic.loadUi('UIs/ranking.ui')
+            self.ui = uic.loadUi('UIs/views.ui')
             self.ui.show()
 
-            self.ui.dateEdit.setCalendarPopup(True)
-            self.ui.dateEdit.setDateRange(QDate(2004, 1, 2), QDate(2022, 12, 22))
-            self.ui.dateEdit.setDate(QDate(2004, 1, 2))
+            self._initialize_tables()
 
-            self.ui.showResults.clicked.connect(self._enter_standings_data)
+
+            self.ui.back.clicked.connect(self.show_main_menu)
+
 
         elif self.ui.search.isChecked():
             self.ui = uic.loadUi('UIs/searchMenu.ui')
@@ -85,6 +85,30 @@ class MainMenu(QWindow):
 
             self.ui.backToMainMenu.clicked.connect(self.show_main_menu)
 
+        elif self.ui.searchByGame.isChecked():
+            self.ui = uic.loadUi('UIs/boxScore.ui')
+            self.ui.show()
+
+            self._initialize_team_menu("Atlanta Hawks", 1)
+
+            self.ui.teamMenu.currentIndexChanged.connect(self._enter_date_menu)
+            self.ui.teamMenu_2.currentIndexChanged.connect(self._enter_date_menu)
+
+            self.ui.search.clicked.connect(self._enter_stats_table_data)
+            self.ui.back.clicked.connect(self.show_main_menu)
+
+        elif self.ui.searchStandings.isChecked():
+            self.ui = uic.loadUi('UIs/ranking.ui')
+            self.ui.show()
+
+            self.ui.dateEdit.setCalendarPopup(True)
+            self.ui.dateEdit.setDateRange(QDate(2004, 1, 2), QDate(2022, 12, 22))
+            self.ui.dateEdit.setDate(QDate(2004, 1, 2))
+
+            self.ui.back.clicked.connect(self.show_main_menu)
+
+            self.ui.showResults.clicked.connect(self._enter_standings_data)
+
         else:
             return
 
@@ -92,7 +116,7 @@ class MainMenu(QWindow):
         self.ui = uic.loadUi("UIs/teams.ui")
         self.ui.show()
 
-        self._initialize_team_menu(teamName)
+        self._initialize_team_menu(teamName, 0)
 
         self._enter_player_data()
 
@@ -245,7 +269,7 @@ class MainMenu(QWindow):
                 self.ui.playerStats.setItem(row_number, column_number, item)
 
 
-    def _initialize_team_menu(self, teamName):
+    def _initialize_team_menu(self, teamName, flag):
         """
         Initialize the team menu with team names from the database.
         """
@@ -256,7 +280,7 @@ class MainMenu(QWindow):
                 SELECT concat(city, " ", name)
                 FROM teams
                 """)
-        
+            
         cursor.execute(sql)
         rows = cursor.fetchall()
 
@@ -269,6 +293,14 @@ class MainMenu(QWindow):
 
         index = self.ui.teamMenu.findText(teamName)
         self.ui.teamMenu.setCurrentIndex(index)
+
+        if flag:
+            for row in rows:
+                name = row[0]
+                self.ui.teamMenu_2.addItem(name, row)
+
+            index = self.ui.teamMenu_2.findText(teamName)
+            self.ui.teamMenu_2.setCurrentIndex(index+1)
 
 
 
@@ -417,6 +449,210 @@ class MainMenu(QWindow):
             for column_number, data in enumerate(row_data):
                 item = QTableWidgetItem(str(data))
                 self.ui.westConfTable.setItem(row_number, column_number, item)
+
+
+        cursor.close()
+        conn.close()
+
+
+    def _enter_stats_table_data(self):
+
+        teamName1 = self.ui.teamMenu.currentData()[0]
+        teamName2 = self.ui.teamMenu_2.currentData()[0]
+        date = self.ui.dateMenu.currentData()[0]
+
+        conn = make_connection(config_file = '../configFiles/local_snps_db.ini')
+        cursor = conn.cursor()
+        
+        sql_home = (
+            """
+                SELECT P.player_name, T.name, PGS.SECONDS/60, PGS.PTS, PGS.AST, PGS.REB, PGS.FGM, PGS.FGA, 
+                    PGS.FG3M, PGS.FG3A, PGS.FTM, PGS.FTA, PGS.OREB, PGS.DREB, PGS.AST, PGS.STL, 
+                    PGS.BLK, PGS.TurnOver, PGS.PF
+                FROM player_game_stats PGS
+                inner join games G
+                ON G.game_id = PGS.game_id
+                JOIN teams TH ON G.home_team_id = TH.team_id
+                JOIN teams TA ON G.visitor_team_id = TA.team_id
+                join players P
+                on P.player_id = PGS.player_id
+                join teams T
+                on T.team_id = PGS.team_id
+                """
+                f"WHERE concat(TH.city, ' ', TH.name) = '{teamName1}'"
+                f"AND concat(TA.city, ' ', TA.name) = '{teamName2}'"
+                f"AND G.game_date = '{date}'"
+                f"AND concat(T.city, ' ', T.name) = concat(TH.city, ' ', TH.name)"
+                f"ORDER BY PGS.PTS DESC"
+            )
+
+        sql_away = (
+            """
+                SELECT P.player_name, T.name, PGS.SECONDS/60, PGS.PTS, PGS.AST, PGS.REB, PGS.FGM, PGS.FGA, 
+                    PGS.FG3M, PGS.FG3A, PGS.FTM, PGS.FTA, PGS.OREB, PGS.DREB, PGS.AST, PGS.STL, 
+                    PGS.BLK, PGS.TurnOver, PGS.PF
+                FROM player_game_stats PGS
+                inner join games G
+                ON G.game_id = PGS.game_id
+                JOIN teams TH ON G.home_team_id = TH.team_id
+                JOIN teams TA ON G.visitor_team_id = TA.team_id
+                join players P
+                on P.player_id = PGS.player_id
+                join teams T
+                on T.team_id = PGS.team_id
+                """
+                f"WHERE concat(TH.city, ' ', TH.name) = '{teamName1}'"
+                f"AND concat(TA.city, ' ', TA.name) = '{teamName2}'"
+                f"AND G.game_date = '{date}'"
+                f"AND concat(T.city, ' ', T.name) = concat(TA.city, ' ', TA.name)"
+                f"ORDER BY PGS.PTS DESC"
+            )
+    
+        cursor.execute(sql_home)
+        rows = cursor.fetchall()
+
+        self.ui.Stats_team1.setRowCount(0)
+        
+        for row_number, row_data in enumerate(rows):
+            self.ui.Stats_team1.insertRow(row_number)
+
+            for column_number, data in enumerate(row_data):
+                item = QTableWidgetItem(str(data))
+                self.ui.Stats_team1.setItem(row_number, column_number, item)
+
+
+        cursor.execute(sql_away)
+        rows = cursor.fetchall()
+
+        self.ui.Stats_team2.setRowCount(0)
+        
+        for row_number, row_data in enumerate(rows):
+            self.ui.Stats_team2.insertRow(row_number)
+
+            for column_number, data in enumerate(row_data):
+                item = QTableWidgetItem(str(data))
+                self.ui.Stats_team2.setItem(row_number, column_number, item)
+
+        cursor.close()
+        conn.close()
+
+
+    def _initialize_tables(self):
+        conn = make_connection(config_file = '../configFiles/local_snps_db.ini')
+        cursor = conn.cursor()
+
+        sql_players = ("""SELECT * from players LIMIT 15""")
+        sql_games = ("""SELECT * from games LIMIT 15""")
+        sql_teams = ("""SELECT * from teams LIMIT 15""")
+        sql_ranking = ("""SELECT * from ranking LIMIT 15""")
+        sql_game_stats = ("""SELECT * from game_stats LIMIT 15""")
+        sql_player_stats = ("""SELECT * from player_game_stats LIMIT 15""")
+    
+        cursor.execute(sql_players)
+        rows = cursor.fetchall()
+
+        self.ui.players.setRowCount(0)
+        
+        for row_number, row_data in enumerate(rows):
+            self.ui.players.insertRow(row_number)
+
+            for column_number, data in enumerate(row_data):
+                item = QTableWidgetItem(str(data))
+                self.ui.players.setItem(row_number, column_number, item)
+
+        cursor.execute(sql_games)
+        rows = cursor.fetchall()
+
+        self.ui.games.setRowCount(0)
+        
+        for row_number, row_data in enumerate(rows):
+            self.ui.games.insertRow(row_number)
+
+            for column_number, data in enumerate(row_data):
+                item = QTableWidgetItem(str(data))
+                self.ui.games.setItem(row_number, column_number, item)
+
+        cursor.execute(sql_teams)
+        rows = cursor.fetchall()
+
+        self.ui.teams.setRowCount(0)
+        
+        for row_number, row_data in enumerate(rows):
+            self.ui.teams.insertRow(row_number)
+
+            for column_number, data in enumerate(row_data):
+                item = QTableWidgetItem(str(data))
+                self.ui.teams.setItem(row_number, column_number, item)
+
+        cursor.execute(sql_ranking)
+        rows = cursor.fetchall()
+
+        self.ui.rank.setRowCount(0)
+        
+        for row_number, row_data in enumerate(rows):
+            self.ui.rank.insertRow(row_number)
+
+            for column_number, data in enumerate(row_data):
+                item = QTableWidgetItem(str(data))
+                self.ui.rank.setItem(row_number, column_number, item)
+
+
+        cursor.execute(sql_game_stats)
+        rows = cursor.fetchall()
+
+        self.ui.game_stats.setRowCount(0)
+        
+        for row_number, row_data in enumerate(rows):
+            self.ui.game_stats.insertRow(row_number)
+
+            for column_number, data in enumerate(row_data):
+                item = QTableWidgetItem(str(data))
+                self.ui.game_stats.setItem(row_number, column_number, item)
+
+
+        cursor.execute(sql_player_stats)
+        rows = cursor.fetchall()
+
+        self.ui.players_game_stats.setRowCount(0)
+        
+        for row_number, row_data in enumerate(rows):
+            self.ui.players_game_stats.insertRow(row_number)
+
+            for column_number, data in enumerate(row_data):
+                item = QTableWidgetItem(str(data))
+                self.ui.players_game_stats.setItem(row_number, column_number, item)
+
+        cursor.close()
+        conn.close()
+
+
+    def _enter_date_menu(self):
+
+        teamName1 = self.ui.teamMenu.currentData()[0]
+        teamName2 = self.ui.teamMenu_2.currentData()[0]
+
+        conn = make_connection(config_file = '../configFiles/local_snps_db.ini')
+        cursor = conn.cursor()
+
+        sql = ("""
+                SELECT distinct(G.game_date)
+                FROM player_game_stats PGS
+                inner join games G
+                ON G.game_id = PGS.game_id
+                JOIN teams TH ON G.home_team_id = TH.team_id
+                JOIN teams TA ON G.visitor_team_id = TA.team_id
+                """
+                f"WHERE concat(TH.city, ' ', TH.name) = '{teamName1}'"
+                f"AND concat(TA.city, ' ', TA.name) = '{teamName2}'"
+                f"ORDER BY G.game_date"
+                )
+
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+
+        for row in rows:
+            name = str(row[0])
+            self.ui.dateMenu.addItem(name, row)
 
 
 if __name__ == '__main__':

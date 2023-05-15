@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>868</width>
+    <height>537</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>tableViews</string>
+  </property>
+  <widget class="QPushButton" name="back">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>500</y>
+     <width>101</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>851</width>
+     <height>491</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;NBA Operational Tables&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="Players">
+    <property name="currentIndex">
+     <number>5</number>
+    </property>
+    <widget class="QWidget" name="players_2">
+     <attribute name="title">
+      <string>Players</string>
+     </attribute>
+     <widget class="QTableWidget" name="players">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>1</y>
+        <width>841</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Country</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Height</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Weight</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Draftyear</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="games_2">
+     <attribute name="title">
+      <string>Games</string>
+     </attribute>
+     <widget class="QTableWidget" name="games">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>841</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Game_date</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Id</string>
+       </property>
+      </column>
+
+      <column>
+       <property name="text">
+        <string>status</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>season</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>home_team_wins</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>home_team_id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>vistior_team_id</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="teams_2">
+     <attribute name="title">
+      <string>Teams</string>
+     </attribute>
+     <widget class="QTableWidget" name="teams">
+      <property name="geometry">
+       <rect>
+        <x>-5</x>
+        <y>1</y>
+        <width>851</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Team_ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Abbrevation</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>year_founded</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Year_founded</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>city</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>arena</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>arena_capacity</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>owner</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>general_manager</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>head_coach</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>d_league_affiliation</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>conference</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="rank_2">
+     <attribute name="title">
+      <string>Ranking</string>
+     </attribute>
+     <widget class="QTableWidget" name="rank">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>841</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>New Column</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>standings_date</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>GP</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>G</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>GL</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>home_record</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>away_record</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>team_id</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="game_stats_2">
+     <attribute name="title">
+      <string>Game_stats</string>
+     </attribute>
+     <widget class="QTableWidget" name="game_stats">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>841</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>New Column</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>date</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>game_id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>PTS</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FG_PCT</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FT_PCT</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FG3_PCT</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string> AST</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>team_id </string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Players_game_stats">
+     <attribute name="title">
+      <string>Players_game_stats</string>
+     </attribute>
+     <widget class="QTableWidget" name="players_game_stats">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>841</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>team_id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>SECONDS</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FGM</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FGA</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FGM3</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FG3M</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FG3A</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FTM</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>FTA</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>OREB</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>DREB</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>AST</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>STL</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>BLK</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>TurnOver</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>PF</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string> PTS</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>REB</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>player_id</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
