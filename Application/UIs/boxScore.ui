@@ -145,6 +145,11 @@
      </column>
      <column>
       <property name="text">
+       <string>TurnOvers</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>PF</string>
       </property>
      </column>
@@ -188,11 +193,6 @@
        <string>5</string>
       </property>
      </row>
-     <column>
-      <property name="text">
-       <string>New Column</string>
-      </property>
-     </column>
      <column>
       <property name="text">
        <string>PlayerName</string>
@@ -271,6 +271,11 @@
      <column>
       <property name="text">
        <string>BLK</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>TurnOvers</string>
       </property>
      </column>
      <column>

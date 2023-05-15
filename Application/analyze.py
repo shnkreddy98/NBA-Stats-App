@@ -280,8 +280,6 @@ class analyzeTeam():
 
         self._initialize_team_menu()
 
-        self.ui.teamMenu.currentIndexChanged.connect(lambda: self._enter_player_data())
-
         self.ui.search.clicked.connect(self._update_graph_1)
         self.ui.search.clicked.connect(self._update_graph_2)
         self.ui.search.clicked.connect(self._update_graph_3)
