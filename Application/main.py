@@ -152,7 +152,7 @@ class MainMenu(QWindow):
         
         sql = (
             """
-            select concat(city, " ",name) as team_name from teams
+            select teamName from vw_team_names
             """
             f"where conference = '{conf}'"
             )
@@ -294,8 +294,7 @@ class MainMenu(QWindow):
         cursor = conn.cursor()
         
         sql = ("""
-                SELECT concat(city, " ", name)
-                FROM teams
+                SELECT teamName from vw_team_names;
                 """)
             
         cursor.execute(sql)
@@ -581,8 +580,6 @@ class MainMenu(QWindow):
         for row in rows:
             name = str(row[0])
             self.ui.dateMenu.addItem(name, row)
-
-
 
 
 
